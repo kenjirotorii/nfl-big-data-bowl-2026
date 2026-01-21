@@ -1,0 +1,51 @@
+[project]
+name = "nfl2026"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.8.0",
+    "torch-geometric>=2.6.1",
+    "torchvision>=0.23.0",
+    "pyg-lib==0.4.0+pt28cu128",
+    "torch-cluster==1.6.3+pt28cu128",
+    "torch-scatter==2.1.2+pt28cu128",
+    "torch-sparse==0.6.18+pt28cu128",
+    "torch-spline-conv==1.2.2+pt28cu128",
+    "scipy>=1.15.3",
+    "numpy>=2.2.6",
+    "pandas>=2.3.3",
+    "matplotlib>=3.10.7",
+    "jaxtyping>=0.3.3",
+    "einops>=0.8.1",
+    "lightning==2.4.0",
+    "jsonargparse[signatures]>=4.41.0",
+    "mlflow>=3.4.0",
+    "omegaconf>=2.3.0",
+]
+
+[tool.uv.sources]
+torch = { index = "torch_cu128" }
+torchvision = { index = "torch_cu128" }
+lightning = { git = "https://github.com/Lightning-AI/pytorch-lightning.git", branch = "master" }
+
+[[tool.uv.index]]
+name = "torch_cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv]
+find-links = ["https://data.pyg.org/whl/torch-2.8.0+cu128.html"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["nfl2026"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+cli = "nfl2026.lightning_cli:main"
+build_dataset = "nfl2026.data.dataset:main"
+preprocess_external_data = "nfl2026.data.external_dataset:main"

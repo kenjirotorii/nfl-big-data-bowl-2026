@@ -1,0 +1,20 @@
+{
+    "recommendations": [
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "njpwerner.autodocstring",
+        "donjayamanne.githistory",
+        "DavidAnson.vscode-markdownlint",
+        "aaron-bond.better-comments",
+        "usernamehw.errorlens",
+        "tamasfe.even-better-toml",
+        "ms-python.mypy-type-checker",
+        "kevinrose.vsc-python-indent",
+        "codezombiech.gitignore",
+        "pkief.material-icon-theme",
+        "yzhang.markdown-all-in-one",
+        "shardulm94.trailing-spaces",
+        "charliermarsh.ruff"
+    ]
+}

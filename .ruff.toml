@@ -1,0 +1,112 @@
+target-version = "py310"
+line-length = 88
+indent-width = 4
+
+include = [".py"]
+extend-include = ["*.ipynb"]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+[lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+
+# Rules: https://docs.astral.sh/ruff/rules/#flake8-async-async
+ignore = [
+    "G004",  # logging-f-string
+    "PD901",  # pandas-df-variable-name
+    "PD002",  # pandas-use-of-inplace-argument
+    "RUF001",  # ambiguous-unicode-character-string
+    "RUF002",  # ambiguous-unicode-character-docstring
+    "RUF003",  # ambiguous-unicode-character-comment
+    "PLC1901",  # compare-to-empty-string
+    "PLR2004",  # magic-value-comparison
+    "ANN101",  # missing-type-self
+    "ANN102",  # missing-type-cls
+    "ANN002",  # missing-type-args
+    "ANN003",  # missing-type-kwargs
+    "ERA",  # commented-out-code
+    "ANN201",  # missing-return-type-public-function
+    "ANN202",  # missing-return-type-private-function
+    "PLR",  # pylint Refactor
+    "RSE",  # flake8-raise
+    "D",  # pydocstyle
+    "C90",  # mccabe
+    "T20",  # flake8-print
+    "SLF",  #  flake8-self
+    "BLE",  # flake8-blind-except
+    "FBT",  # flake8-boolean-trap
+    "TRY",  # tryceratops
+    "COM",  # flake8-commas
+    "S",  # flake8-bandit
+    "EM", # flake8-errmsg
+    "EXE",  # flake8-executable
+    "ICN",  # flake8-import-conventions
+    "RET",  #flake8-return
+    "SIM",  #flake8-simplify
+    "TCH",  # flake8-type-checking
+    "PTH",  # flake8-use-pathlib
+    "ISC",  # flake8-implicit-str-concat
+    "N",  # pep8-naming
+    "PT",  # flake8-pytest-style
+    "E501",  # line-too-long
+    "E999", # syntax-error
+    "UP027", # unpacked-list-comprehension
+    "F722", # forward-annotation-syntax-error
+    "UP037", # quoted-annotation
+]
+
+fixable = ["ALL"]
+unfixable = []
+
+[lint.per-file-ignores]
+"*.py" = [
+    "COM812",  # missing-trailing-comma
+    "FBT001",  # boolean-type-hint-positional-argument
+    "FBT002",  # boolean-default-value-positional-argument
+    "INP001",  # implicit-namespace-package
+    "S311",  # suspicious-non-cryptographic-random-usage
+    "S603",  # subprocess-without-shell-equals-true
+    "TRY002",  # default Exception
+]
+"notebooks/*.interactive.py" = ["E402", "F811"]
+
+[lint.pydocstyle]
+convention = "numpy"
+
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[mccabe]
+max-complexity = 10
